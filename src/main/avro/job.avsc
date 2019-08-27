@@ -1,0 +1,43 @@
+{
+  "type": "record",
+  "name": "JobResponse",
+  "namespace": "com.kafka.schema",
+  "fields": [
+    {
+      "name": "jobType",
+      "type": "string"
+    },
+    {
+      "name": "master",
+      "type": "string"
+    },
+    {
+      "name": "deployMode",
+      "type": "string"
+    },
+    {
+      "name": "driverMemory",
+      "type": "string"
+    },
+    {
+      "name": "executorMemory",
+      "type": "string"
+    },
+    {
+      "name": "executorCores",
+      "type": "string"
+    },
+    {
+      "name": "queue",
+      "type": "string"
+    },
+    {
+      "name": "target",
+      "type": "string"
+    },
+    {
+      "name": "config",
+      "type": "string"
+    }
+  ]
+}
