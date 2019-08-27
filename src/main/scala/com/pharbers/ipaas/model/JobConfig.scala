@@ -1,15 +1,18 @@
 package com.pharbers.ipaas.model
 
-class JobConfig {
+case class JobConfig(`class`:String, master: String,
+                     deployMode: String, driverMemory: String,
+                     target: String, parameter: String) {
 	
 	override def toString: String = {
-		"""
-		  |--class org.apache.spark.examples.SparkPi
-		  |--master yarn
-		  |--deploy-mode cluster
-		  |--executor-memory 1G
-		  |--num-executors 1
-		  |hdfs:///test/alex/spark-examples_2.11-2.3.0.jar
+		s"""
+		  |--class ${`class`}
+		  |--master ${master}
+		  |--deploy-mode ${deployMode}
+		  |--executor-memory ${driverMemory}
+		  |--num-executors ${1}
+		  |${target}
+		  |${parameter}
 		  |""".stripMargin
 	}
 }
