@@ -10,10 +10,10 @@ import org.apache.avro.specific.SpecificData;
 @SuppressWarnings("all")
 @org.apache.avro.specific.AvroGenerated
 public class JobResponse extends org.apache.avro.specific.SpecificRecordBase implements org.apache.avro.specific.SpecificRecord {
-  private static final long serialVersionUID = -5174896824032002012L;
-  public static final org.apache.avro.Schema SCHEMA$ = new org.apache.avro.Schema.Parser().parse("{\"type\":\"record\",\"name\":\"JobResponse\",\"namespace\":\"com.pharbers.kafka.schema\",\"fields\":[{\"name\":\"jobType\",\"type\":\"string\"}]}");
+  private static final long serialVersionUID = 2159021660475892652L;
+  public static final org.apache.avro.Schema SCHEMA$ = new org.apache.avro.Schema.Parser().parse("{\"type\":\"record\",\"name\":\"JobResponse\",\"namespace\":\"com.pharbers.kafka.schema\",\"fields\":[{\"name\":\"JobId\",\"type\":\"string\"}]}");
   public static org.apache.avro.Schema getClassSchema() { return SCHEMA$; }
-  @Deprecated public java.lang.CharSequence jobType;
+  @Deprecated public java.lang.CharSequence JobId;
 
   /**
    * Default constructor.  Note that this does not initialize fields
@@ -24,17 +24,17 @@ public class JobResponse extends org.apache.avro.specific.SpecificRecordBase imp
 
   /**
    * All-args constructor.
-   * @param jobType The new value for jobType
+   * @param JobId The new value for JobId
    */
-  public JobResponse(java.lang.CharSequence jobType) {
-    this.jobType = jobType;
+  public JobResponse(java.lang.CharSequence JobId) {
+    this.JobId = JobId;
   }
 
   public org.apache.avro.Schema getSchema() { return SCHEMA$; }
   // Used by DatumWriter.  Applications should not call.
   public java.lang.Object get(int field$) {
     switch (field$) {
-    case 0: return jobType;
+    case 0: return JobId;
     default: throw new org.apache.avro.AvroRuntimeException("Bad index");
     }
   }
@@ -43,25 +43,25 @@ public class JobResponse extends org.apache.avro.specific.SpecificRecordBase imp
   @SuppressWarnings(value="unchecked")
   public void put(int field$, java.lang.Object value$) {
     switch (field$) {
-    case 0: jobType = (java.lang.CharSequence)value$; break;
+    case 0: JobId = (java.lang.CharSequence)value$; break;
     default: throw new org.apache.avro.AvroRuntimeException("Bad index");
     }
   }
 
   /**
-   * Gets the value of the 'jobType' field.
-   * @return The value of the 'jobType' field.
+   * Gets the value of the 'JobId' field.
+   * @return The value of the 'JobId' field.
    */
-  public java.lang.CharSequence getJobType() {
-    return jobType;
+  public java.lang.CharSequence getJobId() {
+    return JobId;
   }
 
   /**
-   * Sets the value of the 'jobType' field.
+   * Sets the value of the 'JobId' field.
    * @param value the value to set.
    */
-  public void setJobType(java.lang.CharSequence value) {
-    this.jobType = value;
+  public void setJobId(java.lang.CharSequence value) {
+    this.JobId = value;
   }
 
   /**
@@ -96,7 +96,7 @@ public class JobResponse extends org.apache.avro.specific.SpecificRecordBase imp
   public static class Builder extends org.apache.avro.specific.SpecificRecordBuilderBase<JobResponse>
     implements org.apache.avro.data.RecordBuilder<JobResponse> {
 
-    private java.lang.CharSequence jobType;
+    private java.lang.CharSequence JobId;
 
     /** Creates a new Builder */
     private Builder() {
@@ -109,8 +109,8 @@ public class JobResponse extends org.apache.avro.specific.SpecificRecordBase imp
      */
     private Builder(com.pharbers.kafka.schema.JobResponse.Builder other) {
       super(other);
-      if (isValidValue(fields()[0], other.jobType)) {
-        this.jobType = data().deepCopy(fields()[0].schema(), other.jobType);
+      if (isValidValue(fields()[0], other.JobId)) {
+        this.JobId = data().deepCopy(fields()[0].schema(), other.JobId);
         fieldSetFlags()[0] = true;
       }
     }
@@ -121,47 +121,47 @@ public class JobResponse extends org.apache.avro.specific.SpecificRecordBase imp
      */
     private Builder(com.pharbers.kafka.schema.JobResponse other) {
             super(SCHEMA$);
-      if (isValidValue(fields()[0], other.jobType)) {
-        this.jobType = data().deepCopy(fields()[0].schema(), other.jobType);
+      if (isValidValue(fields()[0], other.JobId)) {
+        this.JobId = data().deepCopy(fields()[0].schema(), other.JobId);
         fieldSetFlags()[0] = true;
       }
     }
 
     /**
-      * Gets the value of the 'jobType' field.
+      * Gets the value of the 'JobId' field.
       * @return The value.
       */
-    public java.lang.CharSequence getJobType() {
-      return jobType;
+    public java.lang.CharSequence getJobId() {
+      return JobId;
     }
 
     /**
-      * Sets the value of the 'jobType' field.
-      * @param value The value of 'jobType'.
+      * Sets the value of the 'JobId' field.
+      * @param value The value of 'JobId'.
       * @return This builder.
       */
-    public com.pharbers.kafka.schema.JobResponse.Builder setJobType(java.lang.CharSequence value) {
+    public com.pharbers.kafka.schema.JobResponse.Builder setJobId(java.lang.CharSequence value) {
       validate(fields()[0], value);
-      this.jobType = value;
+      this.JobId = value;
       fieldSetFlags()[0] = true;
       return this;
     }
 
     /**
-      * Checks whether the 'jobType' field has been set.
-      * @return True if the 'jobType' field has been set, false otherwise.
+      * Checks whether the 'JobId' field has been set.
+      * @return True if the 'JobId' field has been set, false otherwise.
       */
-    public boolean hasJobType() {
+    public boolean hasJobId() {
       return fieldSetFlags()[0];
     }
 
 
     /**
-      * Clears the value of the 'jobType' field.
+      * Clears the value of the 'JobId' field.
       * @return This builder.
       */
-    public com.pharbers.kafka.schema.JobResponse.Builder clearJobType() {
-      jobType = null;
+    public com.pharbers.kafka.schema.JobResponse.Builder clearJobId() {
+      JobId = null;
       fieldSetFlags()[0] = false;
       return this;
     }
@@ -170,7 +170,7 @@ public class JobResponse extends org.apache.avro.specific.SpecificRecordBase imp
     public JobResponse build() {
       try {
         JobResponse record = new JobResponse();
-        record.jobType = fieldSetFlags()[0] ? this.jobType : (java.lang.CharSequence) defaultValue(fields()[0]);
+        record.JobId = fieldSetFlags()[0] ? this.JobId : (java.lang.CharSequence) defaultValue(fields()[0]);
         return record;
       } catch (Exception e) {
         throw new org.apache.avro.AvroRuntimeException(e);

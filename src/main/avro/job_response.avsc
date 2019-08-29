@@ -1,0 +1,11 @@
+{
+  "type": "record",
+  "name": "JobResponse",
+  "namespace": "com.pharbers.kafka.schema",
+  "fields": [
+    {
+      "name": "JobId",
+      "type": "string"
+    }
+  ]
+}

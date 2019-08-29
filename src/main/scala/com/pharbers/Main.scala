@@ -1,8 +1,6 @@
 package com.pharbers
 
-import java.util.concurrent.locks.ReentrantLock
-
-import com.pharbers.ipaas.consumer.ListeningTopic
+import com.pharbers.ipaas.kafka.ListeningSubmitTopic
 
 import scala.xml.XML
 
@@ -11,9 +9,9 @@ object Main {
 		val config = sys.env("IPAAS_CONSUMER_KAFKACONFIG")
 		val xml = XML.load(config)
 		val topics = List((xml \ "kafka-config" \ "topics" \"@value").toString())
-		ListeningTopic(topics).start()
+		val group = (xml \ "kafka-config" \ "group" \"@value").toString()
+		ListeningSubmitTopic(topics, group).start()
 		// 测试用，先锁住，该方法有极大的问题
-		val lock = new ReentrantLock(true)
-		lock.lock()
+		while (true) {}
 	}
 }

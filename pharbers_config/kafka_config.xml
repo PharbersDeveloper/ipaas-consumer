@@ -1,8 +1,10 @@
 <pharbers-modules>
     <kafka-config>
         <broker value="123.56.179.133:9092" />
-        <group value="job" />
-        <topics value="cjob" />
+<!--        <group value="test20190828" />-->
+<!--        <topics value="cjob-test" />-->
+        <group value="test20190828" />
+        <topics value="cjob-test" />
         <acks value="all" />
         <keyDefaultSerializer value="org.apache.kafka.common.serialization.StringSerializer" />
         <keyDefaultDeserializer value="org.apache.kafka.common.serialization.StringDeserializer" />

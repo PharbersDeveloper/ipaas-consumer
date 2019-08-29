@@ -1,11 +1,13 @@
 package com.pharbers.ipaas.patterns.strategy
 
-case class JobContext(job_type: String) {
+import com.pharbers.ipaas.model.JobConfig
+
+case class JobContext(config: JobConfig) {
 	def mapping(): StrategyTrait = {
-		job_type match {
-			case "Py" => PythonJobStrategy()
-			case "R" => RJobStrategy()
-			case "Jar" => JarJobStrategy()
+		config.JobType match {
+			case "Py" => PythonJobStrategy(config)
+			case "R" => RJobStrategy(config)
+			case "Jar" => JarJobStrategy(config)
 			case _ => ???
 		}
 	}
