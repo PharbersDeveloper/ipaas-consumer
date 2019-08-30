@@ -4,6 +4,10 @@
   "namespace": "com.pharbers.kafka.schema",
   "fields": [
     {
+      "name": "Name",
+      "type": "string"
+    },
+    {
       "name": "JobType",
       "type": "string"
     },
@@ -40,7 +44,11 @@
       "type": "string"
     },
     {
-      "name": "Parameter",
+      "name": "Parameters",
+      "type": "string"
+    },
+    {
+      "name": "Files",
       "type": "string"
     }
   ]

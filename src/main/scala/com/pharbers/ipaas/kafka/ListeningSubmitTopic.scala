@@ -16,11 +16,12 @@ case class ListeningSubmitTopic(topic: List[String], group: String) {
 		} catch {
 			case e: Exception =>
 				println(e.getMessage)
-//				pkc.close()
+				pkc.close()
 		}
 	}
 	
 	def process(record: ConsumerRecord[String, JobRequest]): Unit = {
+//		println(record.value().toString)
 		val context = JobContext(new Gson().fromJson(record.value().toString, classOf[JobConfig]))
 		context.DoExecute()
 	}

@@ -6,6 +6,7 @@ import java.util.concurrent.TimeUnit
 import com.google.gson.Gson
 import com.pharbers.ipaas.model.JobConfig
 import com.pharbers.kafka.producer.PharbersKafkaProducer
+import com.pharbers.kafka.schema.{JobResponse, ListeningJobTask}
 import org.apache.avro.Schema
 import org.apache.avro.generic.{GenericData, GenericRecord}
 import org.scalatest.FunSuite
@@ -33,7 +34,7 @@ class TestKafka extends FunSuite{
 	test("Producer Reg") {
 		val sche: Schema = Schema.parse(new File("src/main/avro/job_request.avsc"))
 		val gr: GenericRecord = new GenericData.Record(sche)
-		
+
 		val pkp = new PharbersKafkaProducer[String, GenericRecord]
 		gr.put("JobType", "Jar")
 		gr.put("Class", "com.pharbers.ipaas.data.driver.Main")
@@ -43,26 +44,46 @@ class TestKafka extends FunSuite{
 		gr.put("ExecutorCores", "1")
 		gr.put("NumExecutors", "1")
 		gr.put("Queue", "default")
+		gr.put("Files", "hdfs:///jars/context/pharbers_config/kafka_config.xml,hdfs:///jars/context/pharbers_config/secrets/kafka.broker1.truststore.jks,hdfs:///jars/context/pharbers_config/secrets/kafka.broker1.keystore.jks")
 		gr.put("Target", "hdfs:///jars/context/job-context.jar")
 		gr.put("Parameter", "yaml hdfs hdfs:///test/MZclean.yaml")
-		
-		println(gr.toString)
-		
+		val fu = pkp.produce("cjob-test", "", gr)
+		println(fu.get(10, TimeUnit.SECONDS))
+
 //		1 to 10 foreach { _ =>
 //			val fu = pkp.produce("cjob-test", "", gr)
 //			println(fu.get(10, TimeUnit.SECONDS))
 //		}
-		val fu = pkp.produce("cjob-test", "", gr)
-		println(fu.get(10, TimeUnit.SECONDS))
+
+		
+//		val jobResponse = new JobResponse()
+//		jobResponse.put("JobId", "000000000000000000")
+//		ProducerAvroTopic("cjob-test2", jobResponse)
+		
+		
+//		val jt = new ListeningJobTask()
+//		jt.put("JobId", "0000574552")
+//		ProducerAvroTopic("listeningJobTask", jt)
 	}
 	
-	test("parsing") {
-		val str =
-			"""
-			  |{"JobType": "Jar", "Class": "com.pharbers.ipaas.Main", "Master": "yarn", "DeployMode": "cluster", "DriverMemory": "1G", "Target": "xxx.jar", "Parameter": "yaml hdfs hdfs:///xxx/xx/xx.jar"}
-			""".stripMargin
-		val gson = new Gson
-		val c = gson.fromJson(str, classOf[JobConfig])
-		println(c.toString)
+	
+	test("Producer Reg") {
+		val sche: Schema = Schema.parse(new File("src/main/avro/job_request.avsc"))
+		val gr: GenericRecord = new GenericData.Record(sche)
+		
+		val pkp = new PharbersKafkaProducer[String, GenericRecord]
+		gr.put("JobType", "R")
+		gr.put("Class", "")
+		gr.put("Master", "yarn")
+		gr.put("DeployMode", "cluster")
+		gr.put("ExecutorMemory", "1G")
+		gr.put("ExecutorCores", "1")
+		gr.put("NumExecutors", "1")
+		gr.put("Queue", "default")
+		gr.put("Files", "AddCols.R,CastCol2Double.R,ColMin.R,ColMax.R,ColRename.R,ColSum.R,CurveFunc.R,UCBDataBinding.R,TMCalCurveSkeleton2.R,UCBCalFuncs.R,TMCalResAchv.R")
+		gr.put("Target", "")
+		gr.put("Parameter", "TMUCBCalMain.R")
+		val fu = pkp.produce("cjob-test", "", gr)
+		println(fu.get(10, TimeUnit.SECONDS))
 	}
 }

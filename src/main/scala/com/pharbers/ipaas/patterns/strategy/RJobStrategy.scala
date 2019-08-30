@@ -6,6 +6,8 @@ import com.pharbers.ipaas.model.JobConfig
 case class RJobStrategy(config: JobConfig) extends StrategyTrait {
 	override def DoExecute(): Unit = {
 		println("exec R")
-		ShellCmdExec("").execute()
+		val cmd = s"spark-submit${config.toString}"
+		println(cmd)
+		ShellCmdExec(cmd).execute()
 	}
 }
