@@ -6,7 +6,6 @@ import java.util.concurrent.TimeUnit
 import com.google.gson.Gson
 import com.pharbers.ipaas.model.JobConfig
 import com.pharbers.kafka.producer.PharbersKafkaProducer
-import com.pharbers.kafka.schema.{JobResponse, ListeningJobTask}
 import org.apache.avro.Schema
 import org.apache.avro.generic.{GenericData, GenericRecord}
 import org.scalatest.FunSuite
@@ -55,22 +54,22 @@ class TestKafka extends FunSuite{
 //			println(fu.get(10, TimeUnit.SECONDS))
 //		}
 
-		
+
 //		val jobResponse = new JobResponse()
 //		jobResponse.put("JobId", "000000000000000000")
 //		ProducerAvroTopic("cjob-test2", jobResponse)
-		
-		
+
+
 //		val jt = new ListeningJobTask()
 //		jt.put("JobId", "0000574552")
 //		ProducerAvroTopic("listeningJobTask", jt)
 	}
 	
 	
-	test("Producer Reg") {
+	test("Producer Reg2") {
 		val sche: Schema = Schema.parse(new File("src/main/avro/job_request.avsc"))
 		val gr: GenericRecord = new GenericData.Record(sche)
-		
+
 		val pkp = new PharbersKafkaProducer[String, GenericRecord]
 		gr.put("JobType", "R")
 		gr.put("Class", "")
@@ -85,5 +84,15 @@ class TestKafka extends FunSuite{
 		gr.put("Parameter", "TMUCBCalMain.R")
 		val fu = pkp.produce("cjob-test", "", gr)
 		println(fu.get(10, TimeUnit.SECONDS))
+	}
+	
+	
+	test("aa"){
+//		val conf = Nil
+//		val r = conf.map(s => s"--conf $s ").reduce((a, b) => a + b)
+//		println(r)
+		val str = """{"Name": "Alex", "Master": "yarn"}"""
+		val r = new Gson().fromJson(str, classOf[JobConfig]).toString
+		println(r)
 	}
 }

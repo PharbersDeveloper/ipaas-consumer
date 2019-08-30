@@ -1,6 +1,6 @@
 package com.pharbers.ipaas.kafka
 
-import com.google.gson.Gson
+//import com.google.gson.Gson
 import com.pharbers.ipaas.model.JobConfig
 import com.pharbers.ipaas.patterns.strategy.JobContext
 import com.pharbers.kafka.consumer.PharbersKafkaConsumer
@@ -22,7 +22,7 @@ case class ListeningSubmitTopic(topic: List[String], group: String) {
 	
 	def process(record: ConsumerRecord[String, JobRequest]): Unit = {
 //		println(record.value().toString)
-		val context = JobContext(new Gson().fromJson(record.value().toString, classOf[JobConfig]))
-		context.DoExecute()
+//		val context = JobContext(new Gson().fromJson(record.value().toString, classOf[JobConfig]))
+//		context.DoExecute()
 	}
 }

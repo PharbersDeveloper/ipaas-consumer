@@ -10,8 +10,8 @@ import org.apache.avro.specific.SpecificData;
 @SuppressWarnings("all")
 @org.apache.avro.specific.AvroGenerated
 public class JobRequest extends org.apache.avro.specific.SpecificRecordBase implements org.apache.avro.specific.SpecificRecord {
-  private static final long serialVersionUID = -1961411264223016124L;
-  public static final org.apache.avro.Schema SCHEMA$ = new org.apache.avro.Schema.Parser().parse("{\"type\":\"record\",\"name\":\"JobRequest\",\"namespace\":\"com.pharbers.kafka.schema\",\"fields\":[{\"name\":\"Name\",\"type\":\"string\"},{\"name\":\"JobType\",\"type\":\"string\"},{\"name\":\"Class\",\"type\":\"string\"},{\"name\":\"Master\",\"type\":\"string\"},{\"name\":\"DeployMode\",\"type\":\"string\"},{\"name\":\"ExecutorMemory\",\"type\":\"string\"},{\"name\":\"ExecutorCores\",\"type\":\"string\"},{\"name\":\"NumExecutors\",\"type\":\"string\"},{\"name\":\"Queue\",\"type\":\"string\"},{\"name\":\"Target\",\"type\":\"string\"},{\"name\":\"Parameters\",\"type\":\"string\"},{\"name\":\"Files\",\"type\":\"string\"}]}");
+  private static final long serialVersionUID = 1836499026130222381L;
+  public static final org.apache.avro.Schema SCHEMA$ = new org.apache.avro.Schema.Parser().parse("{\"type\":\"record\",\"name\":\"JobRequest\",\"namespace\":\"com.pharbers.kafka.schema\",\"fields\":[{\"name\":\"Name\",\"type\":\"string\"},{\"name\":\"JobType\",\"type\":\"string\"},{\"name\":\"Class\",\"type\":\"string\"},{\"name\":\"Master\",\"type\":\"string\"},{\"name\":\"DeployMode\",\"type\":\"string\"},{\"name\":\"ExecutorMemory\",\"type\":\"string\"},{\"name\":\"ExecutorCores\",\"type\":\"string\"},{\"name\":\"NumExecutors\",\"type\":\"string\"},{\"name\":\"Queue\",\"type\":\"string\"},{\"name\":\"Target\",\"type\":\"string\"},{\"name\":\"Parameters\",\"type\":\"string\"},{\"name\":\"Files\",\"type\":\"string\"},{\"name\":\"Conf\",\"type\":\"string\"}]}");
   public static org.apache.avro.Schema getClassSchema() { return SCHEMA$; }
   @Deprecated public java.lang.CharSequence Name;
   @Deprecated public java.lang.CharSequence JobType;
@@ -25,6 +25,7 @@ public class JobRequest extends org.apache.avro.specific.SpecificRecordBase impl
   @Deprecated public java.lang.CharSequence Target;
   @Deprecated public java.lang.CharSequence Parameters;
   @Deprecated public java.lang.CharSequence Files;
+  @Deprecated public java.lang.CharSequence Conf;
 
   /**
    * Default constructor.  Note that this does not initialize fields
@@ -47,8 +48,9 @@ public class JobRequest extends org.apache.avro.specific.SpecificRecordBase impl
    * @param Target The new value for Target
    * @param Parameters The new value for Parameters
    * @param Files The new value for Files
+   * @param Conf The new value for Conf
    */
-  public JobRequest(java.lang.CharSequence Name, java.lang.CharSequence JobType, java.lang.CharSequence Class, java.lang.CharSequence Master, java.lang.CharSequence DeployMode, java.lang.CharSequence ExecutorMemory, java.lang.CharSequence ExecutorCores, java.lang.CharSequence NumExecutors, java.lang.CharSequence Queue, java.lang.CharSequence Target, java.lang.CharSequence Parameters, java.lang.CharSequence Files) {
+  public JobRequest(java.lang.CharSequence Name, java.lang.CharSequence JobType, java.lang.CharSequence Class, java.lang.CharSequence Master, java.lang.CharSequence DeployMode, java.lang.CharSequence ExecutorMemory, java.lang.CharSequence ExecutorCores, java.lang.CharSequence NumExecutors, java.lang.CharSequence Queue, java.lang.CharSequence Target, java.lang.CharSequence Parameters, java.lang.CharSequence Files, java.lang.CharSequence Conf) {
     this.Name = Name;
     this.JobType = JobType;
     this.Class = Class;
@@ -61,6 +63,7 @@ public class JobRequest extends org.apache.avro.specific.SpecificRecordBase impl
     this.Target = Target;
     this.Parameters = Parameters;
     this.Files = Files;
+    this.Conf = Conf;
   }
 
   public org.apache.avro.Schema getSchema() { return SCHEMA$; }
@@ -79,6 +82,7 @@ public class JobRequest extends org.apache.avro.specific.SpecificRecordBase impl
     case 9: return Target;
     case 10: return Parameters;
     case 11: return Files;
+    case 12: return Conf;
     default: throw new org.apache.avro.AvroRuntimeException("Bad index");
     }
   }
@@ -99,6 +103,7 @@ public class JobRequest extends org.apache.avro.specific.SpecificRecordBase impl
     case 9: Target = (java.lang.CharSequence)value$; break;
     case 10: Parameters = (java.lang.CharSequence)value$; break;
     case 11: Files = (java.lang.CharSequence)value$; break;
+    case 12: Conf = (java.lang.CharSequence)value$; break;
     default: throw new org.apache.avro.AvroRuntimeException("Bad index");
     }
   }
@@ -296,6 +301,22 @@ public class JobRequest extends org.apache.avro.specific.SpecificRecordBase impl
   }
 
   /**
+   * Gets the value of the 'Conf' field.
+   * @return The value of the 'Conf' field.
+   */
+  public java.lang.CharSequence getConf() {
+    return Conf;
+  }
+
+  /**
+   * Sets the value of the 'Conf' field.
+   * @param value the value to set.
+   */
+  public void setConf(java.lang.CharSequence value) {
+    this.Conf = value;
+  }
+
+  /**
    * Creates a new JobRequest RecordBuilder.
    * @return A new JobRequest RecordBuilder
    */
@@ -339,6 +360,7 @@ public class JobRequest extends org.apache.avro.specific.SpecificRecordBase impl
     private java.lang.CharSequence Target;
     private java.lang.CharSequence Parameters;
     private java.lang.CharSequence Files;
+    private java.lang.CharSequence Conf;
 
     /** Creates a new Builder */
     private Builder() {
@@ -399,6 +421,10 @@ public class JobRequest extends org.apache.avro.specific.SpecificRecordBase impl
         this.Files = data().deepCopy(fields()[11].schema(), other.Files);
         fieldSetFlags()[11] = true;
       }
+      if (isValidValue(fields()[12], other.Conf)) {
+        this.Conf = data().deepCopy(fields()[12].schema(), other.Conf);
+        fieldSetFlags()[12] = true;
+      }
     }
 
     /**
@@ -454,6 +480,10 @@ public class JobRequest extends org.apache.avro.specific.SpecificRecordBase impl
       if (isValidValue(fields()[11], other.Files)) {
         this.Files = data().deepCopy(fields()[11].schema(), other.Files);
         fieldSetFlags()[11] = true;
+      }
+      if (isValidValue(fields()[12], other.Conf)) {
+        this.Conf = data().deepCopy(fields()[12].schema(), other.Conf);
+        fieldSetFlags()[12] = true;
       }
     }
 
@@ -925,6 +955,45 @@ public class JobRequest extends org.apache.avro.specific.SpecificRecordBase impl
       return this;
     }
 
+    /**
+      * Gets the value of the 'Conf' field.
+      * @return The value.
+      */
+    public java.lang.CharSequence getConf() {
+      return Conf;
+    }
+
+    /**
+      * Sets the value of the 'Conf' field.
+      * @param value The value of 'Conf'.
+      * @return This builder.
+      */
+    public com.pharbers.kafka.schema.JobRequest.Builder setConf(java.lang.CharSequence value) {
+      validate(fields()[12], value);
+      this.Conf = value;
+      fieldSetFlags()[12] = true;
+      return this;
+    }
+
+    /**
+      * Checks whether the 'Conf' field has been set.
+      * @return True if the 'Conf' field has been set, false otherwise.
+      */
+    public boolean hasConf() {
+      return fieldSetFlags()[12];
+    }
+
+
+    /**
+      * Clears the value of the 'Conf' field.
+      * @return This builder.
+      */
+    public com.pharbers.kafka.schema.JobRequest.Builder clearConf() {
+      Conf = null;
+      fieldSetFlags()[12] = false;
+      return this;
+    }
+
     @Override
     public JobRequest build() {
       try {
@@ -941,6 +1010,7 @@ public class JobRequest extends org.apache.avro.specific.SpecificRecordBase impl
         record.Target = fieldSetFlags()[9] ? this.Target : (java.lang.CharSequence) defaultValue(fields()[9]);
         record.Parameters = fieldSetFlags()[10] ? this.Parameters : (java.lang.CharSequence) defaultValue(fields()[10]);
         record.Files = fieldSetFlags()[11] ? this.Files : (java.lang.CharSequence) defaultValue(fields()[11]);
+        record.Conf = fieldSetFlags()[12] ? this.Conf : (java.lang.CharSequence) defaultValue(fields()[12]);
         return record;
       } catch (Exception e) {
         throw new org.apache.avro.AvroRuntimeException(e);
