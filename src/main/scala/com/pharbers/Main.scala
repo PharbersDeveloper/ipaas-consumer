@@ -15,6 +15,6 @@ object Main {
 		ListeningTaskTopic("listeningJobTask" :: Nil, "listeningJobTask").start()
 		
 		// 测试用，先锁住，该方法有极大的问题
-		while (true) {}
+		while (true) { Thread.sleep(10 * 1000) }
 	}
 }
