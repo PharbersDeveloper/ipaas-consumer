@@ -54,6 +54,10 @@
     {
       "name": "Conf",
       "type": "string"
+    },
+    {
+      "name": "Jars",
+      "type": "string"
     }
   ]
 }

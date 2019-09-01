@@ -12,19 +12,17 @@ case class JobConfig(Name: String,
                      Parameters: String,
                      JobType: String,
                      Files: String,
-                     Conf: String) {
+                     Conf: String,
+                     Jars: String) {
 	
 	// 太丑了，第一波结束后换成builder @Alex 留
 	override def toString: String = {
 		val conf = Conf match {
 			case null => ""
-			case s =>
-				s.split(",").toList match {
-					case Nil => return ""
-					case c => c.map(s => s"--conf $s ").reduce((a, b) => a + b)
-				}
+			case "" => ""
+			case s => s.split(",").toList.map(s => s"--conf $s ").reduce((a, b) => a + b)
 		}
-
+		
 		// --conf spark.yarn.appMasterEnv.PHA_CONF_HOME=
 		s"""
 		  |${if (Name != "" && Name != null){ s"--name $Name" }else{""}}
@@ -35,6 +33,7 @@ case class JobConfig(Name: String,
 		  |--executor-cores $ExecutorCores
 		  |--num-executors $NumExecutors
 		  |${conf}
+		  |${if (Jars != "" && Jars != null){ s"--jars $Jars" }else{""}}
 		  |${if (Files != "" && Files != null){ s"--files $Files" }else{""}}
 		  |${if (Queue != "" && Queue != null){ s"--queue $Queue" }else{""}}
 		  |${if (Target != "" && Target != null){ s"$Target" }else{""}}

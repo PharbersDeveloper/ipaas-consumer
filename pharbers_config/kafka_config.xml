@@ -4,7 +4,7 @@
 <!--        <group value="test20190828" />-->
 <!--        <topics value="cjob-test" />-->
         <group value="test20190828" />
-        <topics value="cjob-test" />
+        <topics value="cjob-request-test" />
         <acks value="all" />
         <keyDefaultSerializer value="org.apache.kafka.common.serialization.StringSerializer" />
         <keyDefaultDeserializer value="org.apache.kafka.common.serialization.StringDeserializer" />
