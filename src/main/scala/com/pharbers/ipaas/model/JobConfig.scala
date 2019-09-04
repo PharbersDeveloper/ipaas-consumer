@@ -32,7 +32,7 @@ case class JobConfig(Name: String,
 		  |--executor-memory $ExecutorMemory
 		  |--executor-cores $ExecutorCores
 		  |--num-executors $NumExecutors
-		  |${conf}
+		  |$conf
 		  |${if (Jars != "" && Jars != null){ s"--jars $Jars" }else{""}}
 		  |${if (Files != "" && Files != null){ s"--files $Files" }else{""}}
 		  |${if (Queue != "" && Queue != null){ s"--queue $Queue" }else{""}}

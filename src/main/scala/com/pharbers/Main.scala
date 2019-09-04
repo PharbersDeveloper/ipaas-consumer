@@ -12,7 +12,7 @@ object Main {
 		val group = (xml \ "kafka-config" \ "group" \"@value").toString()
 		
 		ListeningSubmitTopic(topics, group).start()
-		ListeningTaskTopic("listeningJobTask" :: Nil, "listeningJobTask").start()
+		ListeningTaskTopic("ListeningJobTask" :: Nil, "ListeningJobTask").start()
 		
 		// 测试用，先锁住，该方法有极大的问题
 		while (true) { Thread.sleep(10 * 1000) }
