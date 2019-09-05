@@ -22,7 +22,7 @@
                 <scalaVersion>2.11.8</scalaVersion>
                 <scalaBinaryVersion>2.11</scalaBinaryVersion>
 <!--                <spark.version>2.3.0</spark.version>-->
-<!--                <hadoop.version>2.7.2</hadoop.version>-->
+                <hadoop.version>2.7.2</hadoop.version>
                 <scalatest.version>3.0.1</scalatest.version>
                 <log4j.version>2.11.2</log4j.version>
 <!--                <jackson.version>2.9.8</jackson.version>-->
@@ -78,11 +78,30 @@
                     <artifactId>log4j-core</artifactId>
                     <version>${log4j.version}</version>
                 </dependency>
+
+                <dependency>
+                    <groupId>org.apache.commons</groupId>
+                    <artifactId>commons-lang3</artifactId>
+                    <version>3.4</version>
+                </dependency>
+
                 <!--oss-->
                 <dependency>
                     <groupId>com.aliyun.oss</groupId>
                     <artifactId>aliyun-sdk-oss</artifactId>
                     <version>3.5.0</version>
+                </dependency>
+
+                <!--hadoop-->
+                <dependency>
+                    <groupId>org.apache.hadoop</groupId>
+                    <artifactId>hadoop-common</artifactId>
+                    <version>${hadoop.version}</version>
+                </dependency>
+                <dependency>
+                    <groupId>org.apache.hadoop</groupId>
+                    <artifactId>hadoop-hdfs</artifactId>
+                    <version>${hadoop.version}</version>
                 </dependency>
             </dependencies>
         </profile>
