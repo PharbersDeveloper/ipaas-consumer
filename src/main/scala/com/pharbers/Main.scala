@@ -11,8 +11,8 @@ object Main {
 		val topics = List((xml \ "kafka-config" \ "topics" \"@value").toString())
 		val group = (xml \ "kafka-config" \ "group" \"@value").toString()
 		
-//		ListeningSubmitTopic(topics, group).start()
-//		ListeningTaskTopic("ListeningJobTask" :: Nil, "ListeningJobTask").start()
+		ListeningSubmitTopic(topics, group).start()
+		ListeningTaskTopic("ListeningJobTask" :: Nil, "ListeningJobTask").start()
 		ListeningSandBoxOssTopic("ListeningSandBoxOss" :: Nil, "ListeningSandBoxOss").start()
 		
 		// 测试用，先锁住，该方法有极大的问题

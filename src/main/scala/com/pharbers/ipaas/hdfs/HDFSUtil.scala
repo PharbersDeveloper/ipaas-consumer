@@ -62,6 +62,7 @@ object HDFSUtil {
 		if (StringUtils.isNoneBlank(hdfsFile)) {
 			realUrl = hdfsUrl + hdfsFile
 			val config = new Configuration()
+			config.set("fs.hdfs.impl", "org.apache.hadoop.hdfs.DistributedFileSystem");
 			val hdfs = FileSystem.get(URI.create(hdfsUrl), config)
 			val out = hdfs.create(new Path(realUrl))
 			IOUtils.copyBytes(in, out, 4096, true)

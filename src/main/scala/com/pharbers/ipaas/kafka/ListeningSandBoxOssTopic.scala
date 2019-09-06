@@ -19,8 +19,10 @@ case class ListeningSandBoxOssTopic(topic: List[String], group: String) {
 		}
 	}
 	
+	// 周六提出来
 	def process(record: ConsumerRecord[String, ListeningSandBoxOss]): Unit = {
-		println(record.value())
+		val ossPath = record.value().get("Path").toString.split("/").toList
+		println(ossPath.tail.mkString("/"))
 		
 		// Endpoint以杭州为例，其它Region请按实际情况填写。
 		val endpoint = "oss-cn-beijing.aliyuncs.com";
@@ -28,18 +30,15 @@ case class ListeningSandBoxOssTopic(topic: List[String], group: String) {
 		val accessKeyId = "LTAIEoXgk4DOHDGi"
 		val accessKeySecret = "x75sK6191dPGiu9wBMtKE6YcBBh8EI"
 		val bucketName = "pharbers-sandbox"
-		val objectName = record.value().get("Path").toString
-		
+		val objectName = ossPath.tail.mkString("/")
+
 		// 创建OSSClient实例。
 		val ossClient = new OSSClientBuilder().build(endpoint, accessKeyId, accessKeySecret);
-		
-		
+
 		// ossObject包含文件所在的存储空间名称、文件名称、文件元信息以及一个输入流。
 		val ossObject = ossClient.getObject(bucketName, objectName);
-		
-		val dir = "/test/alex/temp2"
-		val remoteFile = dir + "/001test"
-		HDFSUtil.uploadStream2HDFS(ossObject.getObjectContent, remoteFile)
+
+		HDFSUtil.uploadStream2HDFS(ossObject.getObjectContent, "/" + record.value().get("Path").toString)
 		// 关闭OSSClient。
 		ossClient.shutdown();
 	}
