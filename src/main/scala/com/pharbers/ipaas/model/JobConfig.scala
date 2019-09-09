@@ -23,7 +23,6 @@ case class JobConfig(Name: String,
 			case s => s.split(",").toList.map(s => s"--conf $s ").reduce((a, b) => a + b)
 		}
 		
-		// --conf spark.yarn.appMasterEnv.PHA_CONF_HOME=
 		s"""
 		  |${if (Name != "" && Name != null){ s"--name $Name" }else{""}}
 		  |${if (Class != "" && Class != null){ s"--class $Class" }else{""}}
