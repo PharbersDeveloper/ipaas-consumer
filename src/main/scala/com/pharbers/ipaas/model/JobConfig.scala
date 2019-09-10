@@ -28,9 +28,9 @@ case class JobConfig(Name: String,
 		  |${if (Class != "" && Class != null){ s"--class $Class" }else{""}}
 		  |${if (Master != "" && Master != null){ s"--master $Master" }else{""}}
 		  |--deploy-mode $DeployMode
-		  |--executor-memory $ExecutorMemory
-		  |--executor-cores $ExecutorCores
-		  |--num-executors $NumExecutors
+		  |${if (ExecutorMemory != "" && ExecutorMemory != null){ s"--executor-memory $ExecutorMemory" }else{""}}
+		  |${if (ExecutorCores != "" && ExecutorCores != null){ s"--executor-cores $ExecutorCores" }else{""}}
+		  |${if (NumExecutors != "" && NumExecutors != null){ s"--num-executors $NumExecutors" }else{""}}
 		  |$conf
 		  |${if (Jars != "" && Jars != null){ s"--jars $Jars" }else{""}}
 		  |${if (Files != "" && Files != null){ s"--files $Files" }else{""}}
