@@ -1,6 +1,6 @@
 package com.pharbers
 
-import com.pharbers.ipaas.kafka.{ListeningSubmitTopic, ListeningTaskTopic, ListeningSandBoxOssTopic}
+import com.pharbers.ipaas.kafka.{ListeningSubmitTopic, ListeningTaskTopic}
 
 import scala.xml.XML
 
@@ -13,7 +13,6 @@ object Main {
 		
 		ListeningSubmitTopic(topics, group).start()
 		ListeningTaskTopic("ListeningJobTask" :: Nil, "ListeningJobTask").start()
-		ListeningSandBoxOssTopic("ListeningSandBoxOss" :: Nil, "ListeningSandBoxOss").start()
 		
 		// 测试用，先锁住，该方法有极大的问题
 		while (true) { Thread.sleep(10 * 1000) }

@@ -20,10 +20,14 @@ case class ListeningTaskTopic(topic: List[String], group: String) {
 	def process(record: ConsumerRecord[String, ListeningJobTask]): Unit = {
 		println(record.value().toString)
 		val jobResponse = new JobResponse()
-		jobResponse.put("JobId", record.value().get("JobId"))
-		jobResponse.put("Status", record.value().get("Status"))
-		jobResponse.put("Message", record.value().get("Message"))
-		jobResponse.put("Progress", record.value().get("Progress"))
+		jobResponse.setJobId(record.value().getJobId)
+		jobResponse.setStatus(record.value().getStatus)
+		jobResponse.setMessage(record.value().getMessage)
+		jobResponse.setProgress(record.value().getProgress)
+//		jobResponse.put("JobId", record.value().get("JobId"))
+//		jobResponse.put("Status", record.value().get("Status"))
+//		jobResponse.put("Message", record.value().get("Message"))
+//		jobResponse.put("Progress", record.value().get("Progress"))
 		ProducerAvroTopic("cjob-response", jobResponse)
 	}
 	
