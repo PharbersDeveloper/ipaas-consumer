@@ -4,9 +4,9 @@ import com.pharbers.kafka.consumer.PharbersKafkaConsumer
 import com.pharbers.kafka.schema.{JobResponse, ListeningJobTask}
 import org.apache.kafka.clients.consumer.ConsumerRecord
 
-case class ListeningTaskTopic(topic: List[String], group: String) {
+case class ListeningTaskTopic(topic: List[String]) {
 	def start(): Unit = {
-		val pkc = new PharbersKafkaConsumer[String, ListeningJobTask](topic, 1000, Int.MaxValue, process, group)
+		val pkc = new PharbersKafkaConsumer[String, ListeningJobTask](topic, 1000, Int.MaxValue, process)
 		try {
 			val t = new Thread(pkc)
 			t.start()
@@ -24,10 +24,6 @@ case class ListeningTaskTopic(topic: List[String], group: String) {
 		jobResponse.setStatus(record.value().getStatus)
 		jobResponse.setMessage(record.value().getMessage)
 		jobResponse.setProgress(record.value().getProgress)
-//		jobResponse.put("JobId", record.value().get("JobId"))
-//		jobResponse.put("Status", record.value().get("Status"))
-//		jobResponse.put("Message", record.value().get("Message"))
-//		jobResponse.put("Progress", record.value().get("Progress"))
 		ProducerAvroTopic("cjob-response", jobResponse)
 	}
 	

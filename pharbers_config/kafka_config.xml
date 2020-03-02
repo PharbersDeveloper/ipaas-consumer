@@ -1,10 +1,8 @@
 <pharbers-modules>
     <kafka-config>
         <broker value="123.56.179.133:9092" />
-<!--        <group value="test20190828" />-->
-<!--        <topics value="cjob-test" />-->
-        <group value="test20190828" />
-        <topics value="cjob-request-test" />
+        <group value="job-reg" />
+        <topics value="cjob-request" />
         <acks value="all" />
         <keyDefaultSerializer value="org.apache.kafka.common.serialization.StringSerializer" />
         <keyDefaultDeserializer value="org.apache.kafka.common.serialization.StringDeserializer" />
@@ -14,9 +12,9 @@
         <specificAvroReader value="true" />
         <securityProtocol value="SSL" />
         <sslAlgorithm value=" " />
-        <sslTruststoreLocation value="pharbers_config/secrets/kafka.broker1.truststore.jks" />
+        <sslTruststoreLocation value="/kafka/kafka.broker1.truststore.jks" />
         <sslTruststorePassword value="pharbers" />
-        <sslKeystoreLocation value="pharbers_config/secrets/kafka.broker1.keystore.jks" />
+        <sslKeystoreLocation value="/kafka/kafka.broker1.keystore.jks" />
         <sslKeystorePassword value="pharbers" />
     </kafka-config>
 </pharbers-modules>

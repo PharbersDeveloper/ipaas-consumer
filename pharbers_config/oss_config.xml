@@ -1,8 +1,0 @@
-<pharbers-modules>
-   <oss-config>
-       <endpoint value="oss-cn-beijing.aliyuncs.com"/>
-       <accessKeyId value="LTAIEoXgk4DOHDGi"/>
-       <accessKeySecret value="x75sK6191dPGiu9wBMtKE6YcBBh8EI"/>
-       <bucketName value="pharbers-sandbox"/>
-   </oss-config>
-</pharbers-modules>

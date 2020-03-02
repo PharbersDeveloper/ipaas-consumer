@@ -7,9 +7,9 @@ import com.pharbers.kafka.consumer.PharbersKafkaConsumer
 import com.pharbers.kafka.schema.JobRequest
 import org.apache.kafka.clients.consumer.ConsumerRecord
 
-case class ListeningSubmitTopic(topic: List[String], group: String) {
+case class ListeningSubmitTopic(topic: List[String]) {
 	def start(): Unit = {
-		val pkc = new PharbersKafkaConsumer[String, JobRequest](topic, 1000, Int.MaxValue, process, group)
+		val pkc = new PharbersKafkaConsumer[String, JobRequest](topic, 1000, Int.MaxValue, process)
 		try {
 			val t = new Thread(pkc)
 			t.start()
