@@ -14,7 +14,7 @@ ENV PHA_CONF_HOME=""
 
 WORKDIR /home/spark/github/ESNTMRCal
 
-RUN git clone -b alfred-对数 https://github.com/PharbersDeveloper/NTMRCal.git
+RUN git clone -b k8s-对数 https://github.com/PharbersDeveloper/NTMRCal.git
 
 WORKDIR ${IPAASCONSUMERHOME}
 
